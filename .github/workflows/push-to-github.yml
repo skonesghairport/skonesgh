@@ -1,0 +1,17 @@
+name: Push to GitHub
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Push to GitHub
+        run: |
+          git config user.email "dev@skonesgh.com"
+          git config user.name "Skones Security Dev"
+          git remote add github https://github.com/skonesghairport/skonesgh.git || true
+          git push github main
