@@ -12,10 +12,15 @@ import { serveStatic, setupVite } from "./vite";
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
     const server = net.createServer();
-    server.listen(port, () => {
+    server.once("error", () => {
+      // port is not available
+      resolve(false);
+    });
+    server.once("listening", () => {
       server.close(() => resolve(true));
     });
-    server.on("error", () => resolve(false));
+    // If listen throws synchronously it will be caught by 'error' above
+    server.listen(port);
   });
 }
 
@@ -51,7 +56,9 @@ async function startServer() {
     serveStatic(app);
   }
 
-  const preferredPort = parseInt(process.env.PORT || "3000");
+  const preferredPort = Number.isFinite(Number(process.env.PORT))
+    ? parseInt(process.env.PORT!, 10)
+    : 3000;
   const port = await findAvailablePort(preferredPort);
 
   if (port !== preferredPort) {
@@ -61,6 +68,28 @@ async function startServer() {
   server.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);
   });
+
+  server.once("error", err => {
+    console.error("Server error:", err);
+    process.exitCode = 1;
+  });
+
+  const shutdown = () => {
+    console.log("Shutting down server...");
+    server.close(err => {
+      if (err) {
+        console.error("Error during shutdown:", err);
+        process.exit(1);
+      }
+      process.exit(0);
+    });
+  };
+
+  process.on("SIGINT", shutdown);
+  process.on("SIGTERM", shutdown);
 }
 
-startServer().catch(console.error);
+startServer().catch(err => {
+  console.error("Failed to start server:", err);
+  process.exit(1);
+});
