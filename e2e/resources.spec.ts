@@ -91,7 +91,7 @@ test.describe("resources visual regression", () => {
   }) => {
     await page.goto("/resources");
     await expect(page).toHaveScreenshot("resources-hub.png", {
-      fullPage: true,
+      fullPage: false,
       animations: "disabled",
     });
   });
@@ -101,8 +101,9 @@ test.describe("resources visual regression", () => {
   }) => {
     await page.goto("/resources");
     await page.getByTestId("resource-search").fill("certificate");
+    await page.getByTestId("resource-search").scrollIntoViewIfNeeded();
     await expect(page).toHaveScreenshot("resources-filtered-certificate.png", {
-      fullPage: true,
+      fullPage: false,
       animations: "disabled",
     });
   });
