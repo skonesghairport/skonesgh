@@ -1,5 +1,5 @@
 import { trpc } from "@/lib/trpc";
-import { COOKIE_NAME, UNAUTHED_ERR_MSG } from '@shared/const';
+import { COOKIE_NAME, UNAUTHED_ERR_MSG } from "@shared/const";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink, TRPCClientError } from "@trpc/client";
 import { createRoot } from "react-dom/client";
@@ -9,6 +9,35 @@ import { startLogin } from "./const";
 import "./index.css";
 
 const queryClient = new QueryClient();
+
+function installOptionalAnalytics() {
+  const endpoint = import.meta.env.VITE_ANALYTICS_ENDPOINT?.trim();
+  const websiteId = import.meta.env.VITE_ANALYTICS_WEBSITE_ID?.trim();
+
+  if (
+    !endpoint ||
+    !websiteId ||
+    endpoint.includes("%") ||
+    websiteId.includes("%") ||
+    typeof document === "undefined"
+  ) {
+    return;
+  }
+
+  try {
+    const analyticsUrl = new URL("/umami", endpoint);
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = analyticsUrl.toString();
+    script.dataset.websiteId = websiteId;
+    script.setAttribute("data-website-id", websiteId);
+    document.head.appendChild(script);
+  } catch {
+    // Analytics is optional and must never block the application.
+  }
+}
+
+installOptionalAnalytics();
 
 const redirectToLoginIfUnauthorized = (error: unknown) => {
   if (!(error instanceof TRPCClientError)) return;
