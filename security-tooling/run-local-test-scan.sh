@@ -36,6 +36,8 @@ nmap -sT -T2 -p 18080 --max-retries 1 --host-timeout 30s 127.0.0.1 -oN "$OUT_DIR
 whatweb --no-errors --log-verbose="$OUT_DIR/whatweb.txt" http://127.0.0.1:18080/ >/dev/null 2>&1
 
 source "$HOME/.local/share/skones-security-tools/env.sh"
+python3 "$PWD/security-tooling/audit_http_headers.py" http://127.0.0.1:18080/ --output "$OUT_DIR/http_headers.json"
+gitleaks_version="$(gitleaks version 2>/dev/null | head -1 || true)"
 "$SPIDERFOOT_HOME/.venv/bin/python" "$SPIDERFOOT_HOME/sf.py" \
   -s 127.0.0.1 \
   -t IP_ADDRESS \
@@ -44,16 +46,19 @@ source "$HOME/.local/share/skones-security-tools/env.sh"
 
 nmap_version="$(nmap --version | head -1)"
 whatweb_version="$(whatweb --version 2>&1 | head -1)"
+gitleaks_version="${gitleaks_version:-not available}"
 spiderfoot_version="$($SPIDERFOOT_HOME/.venv/bin/python "$SPIDERFOOT_HOME/sf.py" --help 2>&1 | head -1)"
 generated_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 {
   printf '%s\n' '# Weekly Local Security Tooling Report' ''
   printf '%s\n' '- **Target:** `http://127.0.0.1:18080/` (ephemeral loopback fixture)'
-  printf '%s\n' '- **Scope:** Nmap TCP check of port 18080, WhatWeb fingerprinting, and SpiderFoot TCP port discovery against loopback.'
+  printf '%s\n' '- **Scope:** Nmap TCP check of port 18080, WhatWeb fingerprinting, SpiderFoot TCP port discovery, and a body-free HTTP metadata audit against loopback.'
   printf '%s\n' '- **Authorization:** The fixture is created and owned by this runner; no external host was scanned.'
   printf '%s\n' "- **Generated:** \`$generated_at\`" ''
   printf '%s\n' '## Tool versions' '' '| Tool | Version |' '|---|---|' "| Nmap | \`$nmap_version\` |" "| WhatWeb | \`$whatweb_version\` |" "| SpiderFoot | \`$spiderfoot_version\` |" ''
-  printf '%s\n' '## Nmap result' '' '~~~text'
+  printf '%s\n' '## Gitleaks version' '' "\`$gitleaks_version\`" '' '## HTTP metadata audit' '' '~~~json'
+  cat "$OUT_DIR/http_headers.json"
+  printf '%s\n' '~~~' '' '## Nmap result' '' '~~~text'
   cat "$OUT_DIR/nmap.txt"
   printf '%s\n' '~~~' '' '## WhatWeb result' '' '~~~text'
   cat "$OUT_DIR/whatweb.txt"

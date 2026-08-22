@@ -30,6 +30,20 @@ jobs:
       - name: Generate loopback-only report
         run: ./security-tooling/run-local-test-scan.sh "$RUNNER_TEMP/weekly-security-report"
 
+      - name: Scan repository for committed secrets
+        run: |
+          set -euo pipefail
+          source "$HOME/.local/share/skones-security-tools/env.sh"
+          gitleaks dir . \
+            --no-banner \
+            --redact \
+            --max-target-megabytes 10 \
+            --report-format json \
+            --report-path "$RUNNER_TEMP/gitleaks.json" \
+            --exit-code 1
+          test -f "$RUNNER_TEMP/gitleaks.json"
+          rm -f "$RUNNER_TEMP/gitleaks.json"
+
       - name: Upload loopback-only Markdown report
         uses: actions/upload-artifact@v7
         with:

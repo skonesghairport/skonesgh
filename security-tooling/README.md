@@ -4,16 +4,18 @@ This directory provides a reproducible, defensive setup for authorized asset inv
 
 ## Included tools
 
-| Tool                  | Purpose                             | Usage boundary                                                     |
-| --------------------- | ----------------------------------- | ------------------------------------------------------------------ |
-| `nmap`                | Network and service discovery       | Use only with written authorization; prefer narrow, low-rate scans |
-| `dig` from `dnsutils` | DNS inspection                      | Prefer passive lookups and owned domains                           |
-| `whois`               | Registration and allocation records | Public-record lookup only                                          |
-| `jq`                  | JSON inspection                     | Local data processing                                              |
-| `whatweb`             | Web technology fingerprinting       | Use only on authorized sites                                       |
-| SpiderFoot            | OSINT collection and correlation    | Run on owned or authorized targets; keep its listener on loopback  |
+| Tool                    | Purpose                                             | Usage boundary                                                     |
+| ----------------------- | --------------------------------------------------- | ------------------------------------------------------------------ |
+| `nmap`                  | Network and service discovery                       | Use only with written authorization; prefer narrow, low-rate scans |
+| `dig` from `dnsutils`   | DNS inspection                                      | Prefer passive lookups and owned domains                           |
+| `whois`                 | Registration and allocation records                 | Public-record lookup only                                          |
+| `jq`                    | JSON inspection                                     | Local data processing                                              |
+| `whatweb`               | Web technology fingerprinting                       | Use only on authorized sites                                       |
+| Gitleaks                | Repository secret detection                         | Scan source and history only; never upload secret-bearing output   |
+| SpiderFoot              | OSINT collection and correlation                    | Run on owned or authorized targets; keep its listener on loopback  |
+| `audit_http_headers.py` | Safe HTTP metadata and security-header observations | Loopback-only by default; never collects response bodies           |
 
-The installer places SpiderFoot in a dedicated virtual environment under `~/.local/share/skones-security-tools` and installs the command-line utilities through the host’s Ubuntu repositories.
+The installer places SpiderFoot in a dedicated virtual environment under `~/.local/share/skones-security-tools`, installs the command-line utilities through the host’s Ubuntu repositories, and installs the pinned Gitleaks release with checksum verification from its official GitHub release assets.
 
 ## Install
 
@@ -52,7 +54,7 @@ The health check uses `https://openrouter.ai/api/v1/chat/completions` and the `o
 
 The workflow at `.github/workflows/security-tooling.yml` automatically installs and verifies the scoped tools, type-checks and tests the application, and scans committed content for credential-like values on changes to the relevant files. It also exposes a separate `workflow_dispatch` entry for a low-impact OSINT run. That manual job requires an explicit authorization acknowledgement and a hostname or URL, keeps raw reports on the ephemeral runner, and does not upload scan findings. Do not enable or schedule broader scanning without defining the target ownership, rate limits, data-retention policy, and review process first.
 
-The workflow at `.github/workflows/weekly-security-report.yml` runs every Monday at 03:00 UTC and can also be started manually. It creates a disposable loopback HTTP fixture, runs Nmap, WhatWeb, and SpiderFoot against that fixture, and uploads only a Markdown summary for 30 days. This provides a safe weekly tooling and local-service regression report without probing an external system. Use the separately gated manual job for an authorized external target.
+The workflow at `.github/workflows/weekly-security-report.yml` runs every Monday at 03:00 UTC and can also be started manually. It creates a disposable loopback HTTP fixture, runs Nmap, WhatWeb, SpiderFoot, and the custom HTTP metadata auditor against that fixture, then scans the repository with Gitleaks. It uploads only a Markdown summary for 30 days; raw Gitleaks output is deleted on the runner and is never uploaded. This provides a safe weekly tooling and local-service regression report without probing an external system. Use the separately gated manual job for an authorized external target.
 
 The former `.github/workflows/push-to-github.yml` workflow is retained as a disabled, read-only stub. It no longer runs on pushes and cannot attempt repository writes with `github-actions[bot]`; changes must go through reviewed pull requests or an approved deployment integration.
 
