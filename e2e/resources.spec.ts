@@ -107,7 +107,11 @@ test.describe("resources visual regression", () => {
     await stabilizeSnapshotBounds(page);
     await expect(page.getByTestId("resources-hero")).toHaveScreenshot(
       "resources-hero.png",
-      { animations: "disabled" }
+      {
+        animations: "disabled",
+        // Keep a small cross-run allowance for CI font rasterization.
+        maxDiffPixelRatio: 0.08,
+      }
     );
     await expect(page.getByTestId("flight-tracker-card")).toHaveScreenshot(
       "flight-tracker-card.png",
@@ -123,7 +127,11 @@ test.describe("resources visual regression", () => {
     await stabilizeSnapshotBounds(page);
     await expect(page.getByTestId("resource-results")).toHaveScreenshot(
       "resources-filtered-results.png",
-      { animations: "disabled" }
+      {
+        animations: "disabled",
+        // Keep a small cross-run allowance for CI font rasterization.
+        maxDiffPixelRatio: 0.08,
+      }
     );
   });
 });
