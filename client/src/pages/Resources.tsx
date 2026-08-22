@@ -110,48 +110,146 @@ const flightViews = [
     label: "Global map",
     detail: "Live worldwide traffic",
     href: "https://www.flightradar24.com/",
+    regions: ["all"],
   },
   {
     id: "atl",
     label: "ATL airport",
     detail: "Atlanta / Hartsfield–Jackson",
     href: "https://www.flightradar24.com/data/airports/atl",
-  },
-  {
-    id: "lhr",
-    label: "LHR airport",
-    detail: "London Heathrow",
-    href: "https://www.flightradar24.com/data/airports/lhr",
-  },
-  {
-    id: "dxb",
-    label: "DXB airport",
-    detail: "Dubai International",
-    href: "https://www.flightradar24.com/data/airports/dxb",
+    regions: ["all", "north-america"],
   },
   {
     id: "jfk",
     label: "JFK airport",
     detail: "New York / John F. Kennedy",
     href: "https://www.flightradar24.com/data/airports/jfk",
+    regions: ["all", "north-america"],
+  },
+  {
+    id: "yyz",
+    label: "YYZ airport",
+    detail: "Toronto Pearson",
+    href: "https://www.flightradar24.com/data/airports/yyz",
+    regions: ["all", "north-america"],
+  },
+  {
+    id: "mex",
+    label: "MEX airport",
+    detail: "Mexico City International",
+    href: "https://www.flightradar24.com/data/airports/mex",
+    regions: ["all", "north-america", "latin-america"],
+  },
+  {
+    id: "lhr",
+    label: "LHR airport",
+    detail: "London Heathrow",
+    href: "https://www.flightradar24.com/data/airports/lhr",
+    regions: ["all", "europe"],
   },
   {
     id: "cdg",
     label: "CDG airport",
     detail: "Paris Charles de Gaulle",
     href: "https://www.flightradar24.com/data/airports/cdg",
+    regions: ["all", "europe"],
+  },
+  {
+    id: "fra",
+    label: "FRA airport",
+    detail: "Frankfurt Airport",
+    href: "https://www.flightradar24.com/data/airports/fra",
+    regions: ["all", "europe"],
+  },
+  {
+    id: "ams",
+    label: "AMS airport",
+    detail: "Amsterdam Schiphol",
+    href: "https://www.flightradar24.com/data/airports/ams",
+    regions: ["all", "europe"],
+  },
+  {
+    id: "dxb",
+    label: "DXB airport",
+    detail: "Dubai International",
+    href: "https://www.flightradar24.com/data/airports/dxb",
+    regions: ["all", "middle-east"],
+  },
+  {
+    id: "doh",
+    label: "DOH airport",
+    detail: "Hamad International",
+    href: "https://www.flightradar24.com/data/airports/doh",
+    regions: ["all", "middle-east"],
   },
   {
     id: "hnd",
     label: "HND airport",
     detail: "Tokyo Haneda",
     href: "https://www.flightradar24.com/data/airports/hnd",
+    regions: ["all", "asia-pacific"],
+  },
+  {
+    id: "sin",
+    label: "SIN airport",
+    detail: "Singapore Changi",
+    href: "https://www.flightradar24.com/data/airports/sin",
+    regions: ["all", "asia-pacific"],
   },
   {
     id: "syd",
     label: "SYD airport",
     detail: "Sydney Kingsford Smith",
     href: "https://www.flightradar24.com/data/airports/syd",
+    regions: ["all", "asia-pacific"],
+  },
+  {
+    id: "gru",
+    label: "GRU airport",
+    detail: "São Paulo Guarulhos",
+    href: "https://www.flightradar24.com/data/airports/gru",
+    regions: ["all", "latin-america"],
+  },
+  {
+    id: "jnb",
+    label: "JNB airport",
+    detail: "O. R. Tambo International",
+    href: "https://www.flightradar24.com/data/airports/jnb",
+    regions: ["all", "africa"],
+  },
+] as const;
+
+const airlineRegions = [
+  { id: "all", label: "All regions", airlines: "Global network" },
+  {
+    id: "north-america",
+    label: "North America",
+    airlines: "Delta · American · United · Air Canada",
+  },
+  {
+    id: "europe",
+    label: "Europe",
+    airlines: "British Airways · Air France · Lufthansa · KLM",
+  },
+  {
+    id: "middle-east",
+    label: "Middle East",
+    airlines: "Emirates · Qatar Airways · Etihad",
+  },
+  {
+    id: "asia-pacific",
+    label: "Asia-Pacific",
+    airlines: "ANA · Singapore Airlines · Qantas · Cathay Pacific",
+  },
+  {
+    id: "latin-america",
+    label: "Latin America",
+    airlines: "LATAM · Aeroméxico · Avianca · Copa Airlines",
+  },
+  {
+    id: "africa",
+    label: "Africa",
+    airlines: "South African Airways · Ethiopian · Kenya Airways",
   },
 ] as const;
 
@@ -195,6 +293,7 @@ export default function Resources() {
   );
   const [flightViewId, setFlightViewId] =
     useState<(typeof flightViews)[number]["id"]>("global");
+  const [airlineRegionId, setAirlineRegionId] = useState("all");
 
   const providers = useMemo(
     () => [
@@ -240,8 +339,20 @@ export default function Resources() {
       levelFilter !== "All levels" ||
       credentialFilter !== "All credential paths"
   );
+  const visibleFlightViews = useMemo(
+    () =>
+      flightViews.filter(view =>
+        view.regions.some(region => region === airlineRegionId)
+      ),
+    [airlineRegionId]
+  );
   const selectedFlightView =
-    flightViews.find(view => view.id === flightViewId) ?? flightViews[0];
+    visibleFlightViews.find(view => view.id === flightViewId) ??
+    visibleFlightViews[0] ??
+    flightViews[0];
+  const selectedAirlineRegion =
+    airlineRegions.find(region => region.id === airlineRegionId) ??
+    airlineRegions[0];
 
   function resetFilters() {
     setQuery("");
@@ -252,7 +363,10 @@ export default function Resources() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f6f8fb] text-slate-950 dark:bg-slate-950 dark:text-slate-50">
-      <section className="relative border-b border-slate-200/80 bg-white/85 dark:border-slate-800 dark:bg-slate-950/85">
+      <section
+        data-testid="resources-hero"
+        className="relative border-b border-slate-200/80 bg-white/85 dark:border-slate-800 dark:bg-slate-950/85"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(14,165,233,0.14),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.10),transparent_32%)]" />
         <div className="container relative py-10 sm:py-16">
           <div className="flex flex-wrap items-center justify-between gap-4">
@@ -291,7 +405,10 @@ export default function Resources() {
       </section>
 
       <section className="container grid gap-5 py-8 md:grid-cols-2">
-        <Card className="overflow-hidden border-slate-200 bg-slate-950 text-white shadow-xl shadow-slate-200/50 dark:border-slate-800 dark:shadow-none">
+        <Card
+          data-testid="flight-tracker-card"
+          className="overflow-hidden border-slate-200 bg-slate-950 text-white shadow-xl shadow-slate-200/50 dark:border-slate-800 dark:shadow-none"
+        >
           <CardHeader className="relative pb-3">
             <div className="absolute right-6 top-6 grid h-12 w-12 place-items-center rounded-2xl bg-cyan-400/15 text-cyan-300">
               <Plane className="h-6 w-6" />
@@ -308,12 +425,37 @@ export default function Resources() {
             </CardDescription>
           </CardHeader>
           <CardContent>
+            <div className="mb-3 rounded-xl border border-white/10 bg-white/5 p-3">
+              <label className="block">
+                <span className="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-cyan-200">
+                  Regional airline filter
+                </span>
+                <select
+                  data-testid="airline-region-filter"
+                  value={airlineRegionId}
+                  onChange={event => setAirlineRegionId(event.target.value)}
+                  className="h-9 w-full rounded-lg border border-white/15 bg-slate-900 px-2 text-xs text-white outline-none focus:border-cyan-300 focus:ring-2 focus:ring-cyan-300/20"
+                >
+                  {airlineRegions.map(region => (
+                    <option key={region.id} value={region.id}>
+                      {region.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <p
+                data-testid="airline-region-summary"
+                className="mt-2 text-[11px] leading-4 text-slate-400"
+              >
+                Representative carriers: {selectedAirlineRegion.airlines}
+              </p>
+            </div>
             <div
-              className="grid grid-cols-2 gap-2"
+              className="grid max-h-72 grid-cols-2 gap-2 overflow-y-auto pr-1"
               role="group"
               aria-label="Flight tracker quick views"
             >
-              {flightViews.map(view => (
+              {visibleFlightViews.map(view => (
                 <button
                   key={view.id}
                   type="button"
@@ -492,7 +634,10 @@ export default function Resources() {
         </div>
 
         {filteredCourses.length > 0 ? (
-          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          <div
+            data-testid="resource-results"
+            className="mt-6 grid gap-4 lg:grid-cols-2"
+          >
             {filteredCourses.map(course => (
               <Card
                 data-testid="resource-card"
