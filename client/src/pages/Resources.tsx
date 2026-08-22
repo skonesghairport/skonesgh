@@ -129,6 +129,30 @@ const flightViews = [
     detail: "Dubai International",
     href: "https://www.flightradar24.com/data/airports/dxb",
   },
+  {
+    id: "jfk",
+    label: "JFK airport",
+    detail: "New York / John F. Kennedy",
+    href: "https://www.flightradar24.com/data/airports/jfk",
+  },
+  {
+    id: "cdg",
+    label: "CDG airport",
+    detail: "Paris Charles de Gaulle",
+    href: "https://www.flightradar24.com/data/airports/cdg",
+  },
+  {
+    id: "hnd",
+    label: "HND airport",
+    detail: "Tokyo Haneda",
+    href: "https://www.flightradar24.com/data/airports/hnd",
+  },
+  {
+    id: "syd",
+    label: "SYD airport",
+    detail: "Sydney Kingsford Smith",
+    href: "https://www.flightradar24.com/data/airports/syd",
+  },
 ] as const;
 
 const accentClasses = {
@@ -293,6 +317,7 @@ export default function Resources() {
                 <button
                   key={view.id}
                   type="button"
+                  data-testid={`flight-quick-view-${view.id}`}
                   onClick={() => setFlightViewId(view.id)}
                   aria-pressed={flightViewId === view.id}
                   className={`rounded-xl border px-3 py-2 text-left text-xs transition-colors ${flightViewId === view.id ? "border-cyan-300 bg-cyan-300/15 text-white" : "border-white/15 bg-white/5 text-slate-300 hover:border-cyan-300/50 hover:bg-white/10"}`}
@@ -313,9 +338,16 @@ export default function Resources() {
                 asChild
                 className="bg-white text-slate-950 hover:bg-cyan-50"
               >
-                <ExternalResourceLink href={selectedFlightView.href}>
+                <a
+                  href={selectedFlightView.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-testid="flight-tracker-link"
+                  className="inline-flex items-center gap-1.5"
+                >
                   Open {selectedFlightView.label}
-                </ExternalResourceLink>
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
               </Button>
             </div>
             <p className="mt-4 text-xs leading-5 text-slate-400">
@@ -385,6 +417,7 @@ export default function Resources() {
                 <Search className="h-3.5 w-3.5" /> Search resources
               </span>
               <input
+                data-testid="resource-search"
                 value={query}
                 onChange={event => setQuery(event.target.value)}
                 placeholder="Try “beginner”, “labs”, or “certificate”"
@@ -396,6 +429,7 @@ export default function Resources() {
                 Provider
               </span>
               <select
+                data-testid="provider-filter"
                 value={providerFilter}
                 onChange={event => setProviderFilter(event.target.value)}
                 className="h-10 w-full min-w-44 rounded-xl border border-slate-300 bg-white px-3 text-sm dark:border-slate-700 dark:bg-slate-950"
@@ -410,6 +444,7 @@ export default function Resources() {
                 Level
               </span>
               <select
+                data-testid="level-filter"
                 value={levelFilter}
                 onChange={event => setLevelFilter(event.target.value)}
                 className="h-10 w-full min-w-36 rounded-xl border border-slate-300 bg-white px-3 text-sm dark:border-slate-700 dark:bg-slate-950"
@@ -424,6 +459,7 @@ export default function Resources() {
                 Credential path
               </span>
               <select
+                data-testid="credential-filter"
                 value={credentialFilter}
                 onChange={event => setCredentialFilter(event.target.value)}
                 className="h-10 w-full min-w-44 rounded-xl border border-slate-300 bg-white px-3 text-sm dark:border-slate-700 dark:bg-slate-950"
@@ -444,7 +480,10 @@ export default function Resources() {
             </Button>
           </div>
           <div className="mt-3 flex items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
-            <span className="inline-flex items-center gap-1.5">
+            <span
+              data-testid="resource-count"
+              className="inline-flex items-center gap-1.5"
+            >
               <Filter className="h-3.5 w-3.5" /> Showing{" "}
               {filteredCourses.length} of {courses.length} resources
             </span>
@@ -456,6 +495,7 @@ export default function Resources() {
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
             {filteredCourses.map(course => (
               <Card
+                data-testid="resource-card"
                 key={course.title}
                 className="group border-slate-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
               >
