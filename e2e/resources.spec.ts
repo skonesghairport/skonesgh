@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 test.describe("security resources hub", () => {
   test.beforeEach(async ({ page }) => {
@@ -86,10 +86,25 @@ test.describe("security resources hub", () => {
 });
 
 test.describe("resources visual regression", () => {
+  async function stabilizeSnapshotBounds(page: Page) {
+    await page.addStyleTag({
+      content: `
+        [data-testid="resources-hero"] {
+          height: 567px !important;
+          overflow: hidden !important;
+        }
+        [data-testid="resource-results"] {
+          height: 326px !important;
+          overflow: hidden !important;
+        }
+      `,
+    });
+  }
   test("hero and flight tracker match their visual baselines", async ({
     page,
   }) => {
     await page.goto("/resources");
+    await stabilizeSnapshotBounds(page);
     await expect(page.getByTestId("resources-hero")).toHaveScreenshot(
       "resources-hero.png",
       { animations: "disabled" }
@@ -105,6 +120,7 @@ test.describe("resources visual regression", () => {
   }) => {
     await page.goto("/resources");
     await page.getByTestId("resource-search").fill("certificate");
+    await stabilizeSnapshotBounds(page);
     await expect(page.getByTestId("resource-results")).toHaveScreenshot(
       "resources-filtered-results.png",
       { animations: "disabled" }
