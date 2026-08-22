@@ -1,0 +1,145 @@
+name: Security tooling
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/security-tooling.yml"
+      - "security-tooling/**"
+      - "skills/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/security-tooling.yml"
+      - "security-tooling/**"
+      - "skills/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Authorized domain or URL to assess"
+        required: true
+        type: string
+      authorization_ack:
+        description: "Confirm written authorization for this target"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-tooling-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate tooling and application
+    if: github.event_name != 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Install scoped OSINT dependencies
+        run: ./security-tooling/install.sh
+
+      - name: Verify installed tooling
+        run: |
+          set -euo pipefail
+          source "$HOME/.local/share/skones-security-tools/env.sh"
+          ./security-tooling/verify.sh | tee security-tooling-verification.txt
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install Node dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type-check and test application
+        run: |
+          pnpm check
+          pnpm test
+
+      - name: Check repository for credential-like values
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -nI -E 'sk-or-v1-[A-Za-z0-9_-]{20,}|Bearer[[:space:]]+[A-Za-z0-9._-]{20,}' -- ':!pnpm-lock.yaml'; then
+            echo 'Credential-like content detected; review and remove it before merging.' >&2
+            exit 1
+          fi
+
+      - name: Upload non-sensitive verification output
+        uses: actions/upload-artifact@v7
+        with:
+          name: security-tooling-verification-${{ github.run_id }}
+          path: security-tooling-verification.txt
+          if-no-files-found: error
+          retention-days: 5
+
+  authorized-osint-scan:
+    name: Manual authorized OSINT scan
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Require authorization acknowledgement
+        env:
+          AUTHORIZATION_ACK: ${{ inputs.authorization_ack }}
+        run: |
+          set -euo pipefail
+          if [[ "$AUTHORIZATION_ACK" != 'true' ]]; then
+            echo 'The authorization acknowledgement must be checked before scanning.' >&2
+            exit 1
+          fi
+
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Install scoped OSINT dependencies
+        run: ./security-tooling/install.sh
+
+      - name: Validate target input
+        env:
+          TARGET: ${{ inputs.target }}
+        run: |
+          set -euo pipefail
+          [[ "$TARGET" =~ ^https?:// ]] || TARGET="https://$TARGET"
+          host="${TARGET#http://}"
+          host="${host#https://}"
+          host="${host%%/*}"
+          host="${host%%:*}"
+          [[ "$host" =~ ^[A-Za-z0-9.-]+$ ]] || { echo 'Target must be a hostname or URL.' >&2; exit 1; }
+          printf 'TARGET_URL=%s\nTARGET_HOST=%s\n' "$TARGET" "$host" >> "$GITHUB_ENV"
+
+      - name: Run low-impact authorized checks
+        env:
+          SCAN_DIR: ${{ runner.temp }}/authorized-osint-scan
+        run: |
+          set -euo pipefail
+          source "$HOME/.local/share/skones-security-tools/env.sh"
+          mkdir -p "$SCAN_DIR"
+          # Keep reports in the ephemeral runner; do not upload potentially sensitive findings.
+          nmap -sT -T2 --top-ports 20 --max-retries 1 --host-timeout 2m "$TARGET_HOST" -oN "$SCAN_DIR/nmap.txt" >/dev/null
+          whatweb --no-errors --log-verbose="$SCAN_DIR/whatweb.txt" "$TARGET_URL" >/dev/null 2>&1
+          "$SPIDERFOOT_HOME/.venv/bin/python" "$SPIDERFOOT_HOME/sf.py" -s "$TARGET_HOST" -u passive -o json > "$SCAN_DIR/spiderfoot.json"
+          test -s "$SCAN_DIR/nmap.txt"
+          test -s "$SCAN_DIR/whatweb.txt"
+          test -s "$SCAN_DIR/spiderfoot.json"
+          printf '%s\n' 'Authorized low-impact scan completed. Raw reports remain on the ephemeral runner and were not uploaded.'
