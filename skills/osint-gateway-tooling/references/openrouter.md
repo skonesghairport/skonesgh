@@ -32,19 +32,19 @@ Do not echo the key, include it in a URL, or put it in a committed file. Use `se
 For an application using the Vercel AI SDK, configure the provider explicitly rather than relying on a model string that may not exist in the selected environment:
 
 ```ts
-import { createOpenAICompatible } from '@ai-sdk/openai-compatible'
-import { streamText } from 'ai'
+import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
+import { streamText } from "ai";
 
 const gateway = createOpenAICompatible({
-  name: 'openrouter',
-  baseURL: process.env.OPENROUTER_BASE_URL ?? 'https://openrouter.ai/api/v1',
+  name: "openrouter",
+  baseURL: process.env.OPENROUTER_BASE_URL ?? "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENROUTER_API_KEY,
-})
+});
 
 export const result = streamText({
-  model: gateway(process.env.OPENROUTER_MODEL ?? 'openrouter/free'),
-  prompt: 'Why is the sky blue?',
-})
+  model: gateway(process.env.OPENROUTER_MODEL ?? "openrouter/free"),
+  prompt: "Why is the sky blue?",
+});
 ```
 
 Install the provider package only if the project does not already provide an equivalent. Keep gateway calls server-side and apply authentication, quotas, request validation, and timeout handling before exposing them through an application route.
