@@ -119,7 +119,11 @@ test.describe("resources visual regression", () => {
     );
     await expect(page.getByTestId("flight-tracker-card")).toHaveScreenshot(
       "flight-tracker-card.png",
-      { animations: "disabled" }
+      {
+        animations: "disabled",
+        // Keep a small cross-run allowance for CI font rasterization.
+        maxDiffPixelRatio: 0.05,
+      }
     );
   });
 
