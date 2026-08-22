@@ -122,3 +122,5 @@ security-tooling/*.db
 security-tooling/*.jsonl
 security-tooling/*.pcap
 security-tooling/__pycache__/
+playwright-report/
+test-results/
