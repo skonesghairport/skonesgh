@@ -11,6 +11,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 // Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Resources from "./pages/Resources";
 
 // Role-based dashboards
 import CEODashboard from "./pages/dashboards/CEODashboard";
@@ -60,15 +61,54 @@ function Router() {
       {/* Public routes */}
       <Route path={"/"} component={isAuthenticated ? SOCDashboard : Home} />
       <Route path={"/login"} component={Login} />
+      <Route path={"/resources"} component={Resources} />
 
       {/* Role-based dashboards */}
-      <Route path={"/dashboard/ceo"} component={() => <ProtectedRoute component={CEODashboard} allowedRoles={["admin"]} />} />
-      <Route path={"/dashboard/md"} component={() => <ProtectedRoute component={MDDashboard} allowedRoles={["admin"]} />} />
-      <Route path={"/dashboard/hr"} component={() => <ProtectedRoute component={HRDashboard} allowedRoles={["admin"]} />} />
-      <Route path={"/dashboard/board"} component={() => <ProtectedRoute component={BoardDashboard} allowedRoles={["admin"]} />} />
-      <Route path={"/dashboard/manager"} component={() => <ProtectedRoute component={ManagerDashboard} allowedRoles={["admin"]} />} />
-      <Route path={"/dashboard/guard"} component={() => <ProtectedRoute component={GuardDashboard} allowedRoles={["user"]} />} />
-      <Route path={"/dashboard/soc"} component={() => <ProtectedRoute component={SOCDashboard} allowedRoles={["admin"]} />} />
+      <Route
+        path={"/dashboard/ceo"}
+        component={() => (
+          <ProtectedRoute component={CEODashboard} allowedRoles={["admin"]} />
+        )}
+      />
+      <Route
+        path={"/dashboard/md"}
+        component={() => (
+          <ProtectedRoute component={MDDashboard} allowedRoles={["admin"]} />
+        )}
+      />
+      <Route
+        path={"/dashboard/hr"}
+        component={() => (
+          <ProtectedRoute component={HRDashboard} allowedRoles={["admin"]} />
+        )}
+      />
+      <Route
+        path={"/dashboard/board"}
+        component={() => (
+          <ProtectedRoute component={BoardDashboard} allowedRoles={["admin"]} />
+        )}
+      />
+      <Route
+        path={"/dashboard/manager"}
+        component={() => (
+          <ProtectedRoute
+            component={ManagerDashboard}
+            allowedRoles={["admin"]}
+          />
+        )}
+      />
+      <Route
+        path={"/dashboard/guard"}
+        component={() => (
+          <ProtectedRoute component={GuardDashboard} allowedRoles={["user"]} />
+        )}
+      />
+      <Route
+        path={"/dashboard/soc"}
+        component={() => (
+          <ProtectedRoute component={SOCDashboard} allowedRoles={["admin"]} />
+        )}
+      />
 
       {/* 404 */}
       <Route path={"/404"} component={NotFound} />
