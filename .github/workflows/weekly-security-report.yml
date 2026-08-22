@@ -1,0 +1,39 @@
+name: Weekly security report
+
+on:
+  schedule:
+    # GitHub scheduled workflows use UTC. This runs every Monday at 03:00 UTC.
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-security-report
+  cancel-in-progress: true
+
+jobs:
+  report:
+    name: Generate weekly local security report
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Install scoped OSINT dependencies
+        run: ./security-tooling/install.sh
+
+      - name: Generate loopback-only report
+        run: ./security-tooling/run-local-test-scan.sh "$RUNNER_TEMP/weekly-security-report"
+
+      - name: Upload loopback-only Markdown report
+        uses: actions/upload-artifact@v7
+        with:
+          name: weekly-security-report-${{ github.run_id }}
+          path: ${{ runner.temp }}/weekly-security-report/report.md
+          if-no-files-found: error
+          retention-days: 30
