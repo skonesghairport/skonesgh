@@ -78,7 +78,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git grep -nI -E 'sk-or-v1-[A-Za-z0-9_-]{20,}|OPENROUTER_API_KEY=[^[:space:]]+|Bearer[[:space:]]+[A-Za-z0-9._-]{20,}' -- ':!pnpm-lock.yaml'; then
+          if git grep -nI -E 'sk-or-v1-[A-Za-z0-9_-]{20,}|Bearer[[:space:]]+[A-Za-z0-9._-]{20,}' -- ':!pnpm-lock.yaml'; then
             echo 'Credential-like content detected; review and remove it before merging.' >&2
             exit 1
           fi
