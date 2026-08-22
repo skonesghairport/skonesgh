@@ -97,6 +97,10 @@ test.describe("resources visual regression", () => {
           height: 326px !important;
           overflow: hidden !important;
         }
+        [data-testid="flight-tracker-card"] {
+          height: 709px !important;
+          overflow: hidden !important;
+        }
       `,
     });
   }
