@@ -5,7 +5,7 @@ printf '%s\n' 'Scoped OSINT tooling verification'
 printf 'Host: '; uname -srm
 printf 'Python: '; python3 --version 2>&1 || true
 
-for command_name in nmap dig whois jq whatweb; do
+for command_name in nmap dig whois jq whatweb gitleaks; do
   if command -v "$command_name" >/dev/null 2>&1; then
     printf '%-10s %s\n' "$command_name" "$(command -v "$command_name")"
   else
