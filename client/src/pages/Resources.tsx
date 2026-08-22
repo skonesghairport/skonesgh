@@ -363,7 +363,10 @@ export default function Resources() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f6f8fb] text-slate-950 dark:bg-slate-950 dark:text-slate-50">
-      <section className="relative border-b border-slate-200/80 bg-white/85 dark:border-slate-800 dark:bg-slate-950/85">
+      <section
+        data-testid="resources-hero"
+        className="relative border-b border-slate-200/80 bg-white/85 dark:border-slate-800 dark:bg-slate-950/85"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(14,165,233,0.14),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.10),transparent_32%)]" />
         <div className="container relative py-10 sm:py-16">
           <div className="flex flex-wrap items-center justify-between gap-4">
@@ -402,7 +405,10 @@ export default function Resources() {
       </section>
 
       <section className="container grid gap-5 py-8 md:grid-cols-2">
-        <Card className="overflow-hidden border-slate-200 bg-slate-950 text-white shadow-xl shadow-slate-200/50 dark:border-slate-800 dark:shadow-none">
+        <Card
+          data-testid="flight-tracker-card"
+          className="overflow-hidden border-slate-200 bg-slate-950 text-white shadow-xl shadow-slate-200/50 dark:border-slate-800 dark:shadow-none"
+        >
           <CardHeader className="relative pb-3">
             <div className="absolute right-6 top-6 grid h-12 w-12 place-items-center rounded-2xl bg-cyan-400/15 text-cyan-300">
               <Plane className="h-6 w-6" />
@@ -628,7 +634,10 @@ export default function Resources() {
         </div>
 
         {filteredCourses.length > 0 ? (
-          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          <div
+            data-testid="resource-results"
+            className="mt-6 grid gap-4 lg:grid-cols-2"
+          >
             {filteredCourses.map(course => (
               <Card
                 data-testid="resource-card"

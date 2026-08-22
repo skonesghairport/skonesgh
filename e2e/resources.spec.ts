@@ -86,26 +86,29 @@ test.describe("security resources hub", () => {
 });
 
 test.describe("resources visual regression", () => {
-  test("default resources hub matches its visual baseline", async ({
+  test("hero and flight tracker match their visual baselines", async ({
     page,
   }) => {
     await page.goto("/resources");
-    await expect(page).toHaveScreenshot("resources-hub.png", {
-      fullPage: false,
-      animations: "disabled",
-    });
+    await expect(page.getByTestId("resources-hero")).toHaveScreenshot(
+      "resources-hero.png",
+      { animations: "disabled" }
+    );
+    await expect(page.getByTestId("flight-tracker-card")).toHaveScreenshot(
+      "flight-tracker-card.png",
+      { animations: "disabled" }
+    );
   });
 
-  test("filtered resources state matches its visual baseline", async ({
+  test("filtered resource results match their visual baseline", async ({
     page,
   }) => {
     await page.goto("/resources");
     await page.getByTestId("resource-search").fill("certificate");
-    await page.getByTestId("resource-search").scrollIntoViewIfNeeded();
-    await expect(page).toHaveScreenshot("resources-filtered-certificate.png", {
-      fullPage: false,
-      animations: "disabled",
-    });
+    await expect(page.getByTestId("resource-results")).toHaveScreenshot(
+      "resources-filtered-results.png",
+      { animations: "disabled" }
+    );
   });
 });
 
