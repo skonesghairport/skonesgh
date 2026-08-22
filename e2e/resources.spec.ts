@@ -84,3 +84,40 @@ test.describe("security resources hub", () => {
     );
   });
 });
+
+test.describe("resources visual regression", () => {
+  test("default resources hub matches its visual baseline", async ({
+    page,
+  }) => {
+    await page.goto("/resources");
+    await expect(page).toHaveScreenshot("resources-hub.png", {
+      fullPage: true,
+      animations: "disabled",
+    });
+  });
+
+  test("filtered resources state matches its visual baseline", async ({
+    page,
+  }) => {
+    await page.goto("/resources");
+    await page.getByTestId("resource-search").fill("certificate");
+    await expect(page).toHaveScreenshot("resources-filtered-certificate.png", {
+      fullPage: true,
+      animations: "disabled",
+    });
+  });
+});
+
+test("regional airline filter changes airport views and carrier summary", async ({
+  page,
+}) => {
+  await page.goto("/resources");
+  await page.getByTestId("airline-region-filter").selectOption("asia-pacific");
+
+  await expect(page.getByTestId("airline-region-summary")).toContainText("ANA");
+  await expect(page.locator('[data-testid^="flight-quick-view-"]')).toHaveCount(
+    3
+  );
+  await expect(page.getByTestId("flight-quick-view-hnd")).toBeVisible();
+  await expect(page.getByTestId("flight-quick-view-atl")).toHaveCount(0);
+});
