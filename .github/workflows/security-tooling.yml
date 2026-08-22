@@ -57,6 +57,17 @@ jobs:
           source "$HOME/.local/share/skones-security-tools/env.sh"
           ./security-tooling/verify.sh | tee security-tooling-verification.txt
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
       - name: Install Node dependencies
         run: pnpm install --frozen-lockfile
 
