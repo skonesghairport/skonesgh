@@ -48,9 +48,13 @@ set +a
 
 The health check uses `https://openrouter.ai/api/v1/chat/completions` and the `openrouter/free` model router by default. Free model availability and limits can change, so do not treat this configuration as a service-level guarantee. Keep all gateway calls server-side in application code and apply authentication, quotas, input validation, timeouts, and output limits before exposing them through a web route.
 
-## Automated checks
+## Automated checks and weekly report
 
 The workflow at `.github/workflows/security-tooling.yml` automatically installs and verifies the scoped tools, type-checks and tests the application, and scans committed content for credential-like values on changes to the relevant files. It also exposes a separate `workflow_dispatch` entry for a low-impact OSINT run. That manual job requires an explicit authorization acknowledgement and a hostname or URL, keeps raw reports on the ephemeral runner, and does not upload scan findings. Do not enable or schedule broader scanning without defining the target ownership, rate limits, data-retention policy, and review process first.
+
+The workflow at `.github/workflows/weekly-security-report.yml` runs every Monday at 03:00 UTC and can also be started manually. It creates a disposable loopback HTTP fixture, runs Nmap, WhatWeb, and SpiderFoot against that fixture, and uploads only a Markdown summary for 30 days. This provides a safe weekly tooling and local-service regression report without probing an external system. Use the separately gated manual job for an authorized external target.
+
+The former `.github/workflows/push-to-github.yml` workflow is retained as a disabled, read-only stub. It no longer runs on pushes and cannot attempt repository writes with `github-actions[bot]`; changes must go through reviewed pull requests or an approved deployment integration.
 
 ## Verification and cleanup
 
