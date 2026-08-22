@@ -112,3 +112,12 @@ temp/
 # Manus version file (auto-generated, not part of source)
 client/public/__manus__/version.json
 .project-config.json
+
+# Local OSINT/security tooling state and sensitive output
+security-tooling/.venv/
+security-tooling/output/
+security-tooling/reports/
+security-tooling/*.sqlite
+security-tooling/*.db
+security-tooling/*.jsonl
+security-tooling/*.pcap
