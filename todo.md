@@ -159,9 +159,21 @@
 
 
 ## Expanded Education & Partnership Request
-- [ ] Research official Ghana aviation, airport, immigration, private-security, and international training sources
-- [ ] Add free and minor-paid course categories with provider ownership and credential conditions
-- [ ] Add G4S and international security association references only as official external resources unless partnership proof exists
-- [ ] Add exchange, cross-deployment, and international-airport partnership pathways as clearly labeled opportunity concepts
-- [ ] Update Skones Security College and presentation with transparent affiliate and partnership disclosures
-- [ ] Validate, commit, and preview the expanded education catalog
+- [x] Research official Ghana aviation, airport-security, immigration, private-security, and international training sources
+- [x] Add free and minor-paid course categories with provider ownership and credential conditions
+- [x] Add G4S and international security association references only as official external resources unless partnership proof exists
+- [x] Add exchange, cross-deployment, and international-airport partnership pathways as clearly labeled opportunity concepts
+- [x] Update Skones Security College and presentation with transparent affiliate and partnership disclosures
+- [x] Validate, commit, and preview the expanded education catalog
+
+
+## Presentation Script Follow-up
+- [x] Detail the G4S modules represented as external references in the app
+- [x] Explain exchange and cross-deployment pathways as future concepts, not active programs
+- [x] Generate a standalone presenter script for all updated presentation slides
+
+
+## Original Logo Follow-up
+- [x] Locate and verify the original Skones Security logo asset
+- [x] Apply the original logo to the College page and presentation title/closing treatments
+- [x] Validate logo rendering and regenerate the presentation deliverables

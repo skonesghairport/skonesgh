@@ -100,8 +100,8 @@ export default function Education() {
       <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
           <a href="/resources" className="flex items-center gap-3 text-sm font-semibold tracking-tight">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-slate-950 text-cyan-300">
-              <ShieldCheck className="h-5 w-5" />
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-slate-950 p-1">
+              <img src="/images/skones-security-logo.png" alt="Skones Security Limited logo" className="h-7 w-7 object-contain" />
             </span>
             <span>Skones Security Desk</span>
           </a>

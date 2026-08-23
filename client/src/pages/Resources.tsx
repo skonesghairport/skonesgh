@@ -374,8 +374,8 @@ export default function Resources() {
               href="/"
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 transition-colors hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
             >
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-slate-950 text-white dark:bg-white dark:text-slate-950">
-                <ShieldCheck className="h-4 w-4" />
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-slate-950 p-1 dark:bg-white">
+                <img src="/images/skones-security-logo.png" alt="Skones Security Limited logo" className="h-6 w-6 object-contain" />
               </span>
               Skones Security Desk
             </a>
