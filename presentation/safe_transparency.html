@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F4F8; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F0F4F8;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 60px;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: #0A2540;
+            margin-bottom: 15px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 64px;
+            color: #0A2540;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+        }
+        .intro-text {
+            font-size: 24px;
+            line-height: 1.6;
+            color: #2D3748;
+        }
+        .accent-bar {
+            width: 60px;
+            height: 4px;
+            background: #E53E3E;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 20px;
+        }
+        th {
+            text-align: left;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            background: #0A2540;
+            color: #F0F4F8;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            height: 60px;
+        }
+        td {
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            height: 80px;
+            border-bottom: 1px solid #CBD5E0;
+        }
+        tr:nth-child(even) {
+            background: rgba(10, 37, 64, 0.03);
+        }
+        .highlight {
+            color: #E53E3E;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="rule"></div>
+        <h2 class="header">Safe, transparent resource use</h2>
+        <div class="content-wrapper">
+            <div class="left-panel">
+                <p class="intro-text">
+                    Skonesgh is built on a model of discovery and awareness that respects the boundaries of third-party content and data.
+                </p>
+                <div class="accent-bar"></div>
+                <p class="intro-text">
+                    By distinguishing local guidance from provider ownership, the app remains a useful tool without compromising privacy or terms of service.
+                </p>
+            </div>
+            <div class="right-panel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Skonesgh Feature</th>
+                            <th>Provider Boundary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="highlight">Local Editorial Guidance</span></td>
+                            <td>Provider-owned course material</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Free Learning Access</span></td>
+                            <td>Paid certificates and exams</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Official External Links</span></td>
+                            <td>Copied or scraped content</td>
+                        </tr>
+                        <tr>
+                            <td><span class="highlight">Aviation Awareness</span></td>
+                            <td>Live aviation data ownership</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

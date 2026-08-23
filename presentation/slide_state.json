@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "title": "Skonesgh App: Security, Learning & Aviation Awareness",
+    "created": 1787494193.076,
+    "last_updated": 1787494247.438,
+    "total_slides": 10
+  },
+  "slides": [
+    {
+      "id": "title_slide",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "app_overview",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "directory_overview",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "top_resources",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "search_workflow",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "airline_filter",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "flight_quick_views",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "college_education",
+      "state": "edited",
+      "pageNum": 8
+    },
+    {
+      "id": "safe_transparency",
+      "state": "edited",
+      "pageNum": 9
+    },
+    {
+      "id": "closing_slide",
+      "state": "edited",
+      "pageNum": 10
+    }
+  ],
+  "outline": [
+    {
+      "id": "title_slide",
+      "title": "Skonesgh App: Security, Learning & Aviation Awareness",
+      "summary": "A practical field guide for sharper security practice, presented by Skones Security.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "app_overview",
+      "title": "What the app provides",
+      "summary": "A clean launchpad for cybersecurity education, operational awareness, and official aviation quick views.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "directory_overview",
+      "title": "Resource directory at a glance",
+      "summary": "A comparison of six official-provider resources from Cisco, Microsoft, Coursera, ISC2, and NIST NICE.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "top_resources",
+      "title": "Top free-first cybersecurity resources",
+      "summary": "Key learning paths from Cisco, Microsoft, and NIST for privacy, threats, and certification preparation.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "search_workflow",
+      "title": "Search and filter workflow",
+      "summary": "Five steps to discover, narrow, and verify official resources without embedding third-party content.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "airline_filter",
+      "title": "Regional airline filter",
+      "summary": "How the navigation aid filters representative carriers and airports by global region.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "flight_quick_views",
+      "title": "FlightRadar24 quick views",
+      "summary": "Curated airport launchpads that open official provider trackers in new tabs.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "college_education",
+      "title": "Skones Security College & Online Education",
+      "summary": "Guided learning tracks for foundations, operational readiness, and certification pathways.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "safe_transparency",
+      "title": "Safe, transparent resource use",
+      "summary": "How the app respects provider terms, data ownership, and access boundaries.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "closing_slide",
+      "title": "Learn deliberately. Observe responsibly.",
+      "summary": "One workspace for discovery and awareness, presented by Skones Security.",
+      "image_plan": "Use a suitable image if needed"
+    }
+  ]
+}

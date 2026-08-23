@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F4F8; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F0F4F8;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 60px;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: #0A2540;
+            margin-bottom: 15px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 64px;
+            color: #0A2540;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .track-card {
+            display: flex;
+            flex-direction: column;
+        }
+        .big-num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 100px;
+            color: #E53E3E;
+            line-height: 1;
+            margin-bottom: 10px;
+            opacity: 0.2;
+        }
+        .track-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: #0A2540;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .track-meta {
+            font-size: 16px;
+            font-weight: 700;
+            color: #E53E3E;
+            margin-bottom: 15px;
+        }
+        .track-desc {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #2D3748;
+        }
+        .footer-note {
+            margin-top: 60px;
+            font-size: 18px;
+            color: #718096;
+            font-style: italic;
+            border-top: 1px solid #CBD5E0;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="rule"></div>
+        <h2 class="header">Skones Security College</h2>
+        <div class="grid">
+            <div class="track-card">
+                <div class="big-num">01</div>
+                <h3 class="track-title">Security Foundations</h3>
+                <p class="track-meta">Start here • 4 blocks</p>
+                <p class="track-desc">Build a practical baseline in threat awareness, privacy, vulnerabilities, and defensive habits.</p>
+            </div>
+            <div class="track-card">
+                <div class="big-num">02</div>
+                <h3 class="track-title">Operational Readiness</h3>
+                <p class="track-meta">Applied practice • 5 blocks</p>
+                <p class="track-desc">Connect cyber hygiene to physical security operations, incident reporting, and escalation.</p>
+            </div>
+            <div class="track-card">
+                <div class="big-num">03</div>
+                <h3 class="track-title">Certification Pathways</h3>
+                <p class="track-meta">Next step • Self-paced</p>
+                <p class="track-desc">Compare entry-level pathways and understand which credentials require separate conditions.</p>
+            </div>
+        </div>
+        <div class="footer-note">
+            Presented by Skones Security. External providers own their courses, data, and access terms.
+        </div>
+    </div>
+</body>
+</html>

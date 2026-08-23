@@ -148,3 +148,11 @@
 - [x] Project initialized with web-db-user scaffold
 - [x] Database schema extended with security operations tables
 - [x] Basic backend infrastructure set up
+
+
+## Follow-up Request
+- [ ] Add Skones Security College and Online Education navigation/tab experience credited to Skones Security
+- [ ] Prepare and generate a feature-and-resources presentation for the Skonesgh app
+- [ ] Inspect related Skones repositories and document a safe consolidation plan
+- [ ] Validate education tab, existing resource directory, and flight quick-view flows
+- [ ] Consolidate only approved repositories or preserve separate repositories with clear links

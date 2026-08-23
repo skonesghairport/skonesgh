@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F4F8; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F0F4F8;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 60px;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: #0A2540;
+            margin-bottom: 15px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 64px;
+            color: #0A2540;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+        .workflow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 70px;
+            color: #E53E3E;
+            line-height: 1;
+            width: 80px;
+            text-align: right;
+        }
+        .step-content {
+            font-size: 24px;
+            line-height: 1.4;
+            max-width: 900px;
+            border-left: 2px solid #CBD5E0;
+            padding-left: 30px;
+            padding-top: 5px;
+        }
+        .step-content strong {
+            color: #0A2540;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="rule"></div>
+        <h2 class="header">Search and filter workflow</h2>
+        <div class="workflow-container">
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-content"><strong>Enter a keyword</strong> such as “beginner,” “labs,” or “certificate” to start discovery.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-content"><strong>Narrow results</strong> by provider, learning level, or specific credential path.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-content"><strong>Review the resource card</strong> for format details and specific credential notes.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <div class="step-content"><strong>Open the official link</strong> to access the provider's platform in a new tab.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">05</div>
+                <div class="step-content"><strong>Re-check conditions</strong> for enrollment, trials, and certificates on the provider site.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

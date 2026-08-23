@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F4F8; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F0F4F8;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 60px;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: #0A2540;
+            margin-bottom: 15px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 64px;
+            color: #0A2540;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .resource-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        .big-num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 70px;
+            color: #E53E3E;
+            line-height: 0.8;
+            margin-right: 20px;
+            opacity: 0.4;
+        }
+        .resource-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: #0A2540;
+            margin-bottom: 8px;
+        }
+        .resource-content p {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        blockquote {
+            border-left: 6px solid #E53E3E;
+            padding-left: 30px;
+            padding-top: 10px;
+            font-size: 22px;
+            font-style: italic;
+            color: #2D3748;
+            max-width: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="rule"></div>
+        <h2 class="header">Top free-first cybersecurity resources</h2>
+        <div class="grid">
+            <div class="resource-item">
+                <span class="big-num">01</span>
+                <div class="resource-content">
+                    <h3>Cisco: Intro to Cybersecurity</h3>
+                    <p>A strong starting point for privacy, threats, and defensive habits. Includes 6 hours of material and 7 practical labs.</p>
+                </div>
+            </div>
+            <div class="resource-item">
+                <span class="big-num">02</span>
+                <div class="resource-content">
+                    <h3>Microsoft: Security Concepts</h3>
+                    <p>A beginner path covering cryptography, networks, and app security with no prerequisites.</p>
+                </div>
+            </div>
+            <div class="resource-item">
+                <span class="big-num">03</span>
+                <div class="resource-content">
+                    <h3>Cisco: Security Essentials</h3>
+                    <p>Builds foundation for CCST certification; focuses on securing devices and organizations.</p>
+                </div>
+            </div>
+            <div class="resource-item">
+                <span class="big-num">04</span>
+                <div class="resource-content">
+                    <h3>NIST NICE Directory</h3>
+                    <p>A government-maintained directory for finding additional free and low-cost learning content.</p>
+                </div>
+            </div>
+        </div>
+        <blockquote>
+            Free learning access does not necessarily mean a free certificate or exam. The app labels these distinctions so learners can verify current provider terms before enrolling.
+        </blockquote>
+    </div>
+</body>
+</html>

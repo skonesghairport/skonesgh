@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F4F8; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F0F4F8;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: #0A2540;
+            margin-bottom: 40px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 90px;
+            color: #0A2540;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .credit {
+            font-size: 32px;
+            color: #E53E3E;
+            font-weight: 700;
+            margin-bottom: 80px;
+        }
+        .links-section {
+            margin-top: auto;
+            padding-top: 40px;
+            border-top: 1px solid #CBD5E0;
+        }
+        .links-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #718096;
+            margin-bottom: 20px;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        .link-item {
+            font-size: 18px;
+            color: #2D3748;
+            text-decoration: none;
+        }
+        .link-item strong {
+            color: #0A2540;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="rule"></div>
+        <h1 class="header">Learn deliberately.<br>Observe responsibly.</h1>
+        <p class="credit">Presented by Skones Security</p>
+        
+        <div class="links-section">
+            <p class="links-title">Official Resource Links</p>
+            <div class="links-grid">
+                <div class="link-item"><strong>Cisco</strong> Introduction to Cybersecurity</div>
+                <div class="link-item"><strong>Microsoft Learn</strong> Fundamentals</div>
+                <div class="link-item"><strong>FlightRadar24</strong> Global Tracker</div>
+                <div class="link-item"><strong>Cisco</strong> Cybersecurity Essentials</div>
+                <div class="link-item"><strong>NIST NICE</strong> Learning Directory</div>
+                <div class="link-item"><strong>Coursera</strong> Security Catalog</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

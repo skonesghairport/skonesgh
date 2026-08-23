@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F4F8; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F0F4F8;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 60px;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: #0A2540;
+            margin-bottom: 15px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 72px;
+            color: #0A2540;
+            line-height: 1.1;
+            margin-bottom: 50px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .description {
+            font-size: 24px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .region-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .region-item {
+            display: flex;
+            align-items: center;
+        }
+        .number {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 60px;
+            color: #E53E3E;
+            line-height: 1;
+            margin-right: 20px;
+            opacity: 0.2;
+        }
+        .region-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0A2540;
+        }
+        .accent-bar {
+            width: 40px;
+            height: 4px;
+            background: #E53E3E;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="rule"></div>
+        <h2 class="header">Regional airline filter</h2>
+        <div class="main-content">
+            <div class="left-col">
+                <p class="description">
+                    The FlightRadar24 panel includes a navigation aid that filters representative carriers and airports by global region. 
+                </p>
+                <div class="accent-bar"></div>
+                <p class="description">
+                    This selection updates the visible quick-view buttons, keeping the operational context focused on the user’s chosen area without claiming to replicate live schedule data.
+                </p>
+            </div>
+            <div class="region-list">
+                <div class="region-item">
+                    <span class="number">01</span>
+                    <span class="region-name">North America & Europe</span>
+                </div>
+                <div class="region-item">
+                    <span class="number">02</span>
+                    <span class="region-name">Middle East & Africa</span>
+                </div>
+                <div class="region-item">
+                    <span class="number">03</span>
+                    <span class="region-name">Asia-Pacific & Latin America</span>
+                </div>
+                <div class="region-item">
+                    <span class="number">04</span>
+                    <span class="region-name">Global / All Regions</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
