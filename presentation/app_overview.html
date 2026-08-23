@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F4F8; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F0F4F8;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 60px;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: #0A2540;
+            margin-bottom: 15px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 72px;
+            color: #0A2540;
+            line-height: 1.1;
+            margin-bottom: 50px;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        .number {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 80px;
+            color: #E53E3E;
+            line-height: 0.8;
+            margin-right: 25px;
+            opacity: 0.3;
+        }
+        .text-block {
+            font-size: 24px;
+            line-height: 1.4;
+            max-width: 450px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="rule"></div>
+        <h2 class="header">What the app provides</h2>
+        <div class="content-grid">
+            <div class="list-column">
+                <div class="list-item">
+                    <span class="number">01</span>
+                    <p class="text-block">A clean public launchpad for cybersecurity education and operational awareness.</p>
+                </div>
+                <div class="list-item">
+                    <span class="number">02</span>
+                    <p class="text-block">A free-first resource directory with provider, level, and keyword filters.</p>
+                </div>
+                <div class="list-item">
+                    <span class="number">03</span>
+                    <p class="text-block">Official FlightRadar24 links for global traffic and airport quick views.</p>
+                </div>
+            </div>
+            <div class="list-column">
+                <div class="list-item">
+                    <span class="number">04</span>
+                    <p class="text-block">Clear safety boundaries: no private content or mirrored provider data.</p>
+                </div>
+                <div class="list-item">
+                    <span class="number">05</span>
+                    <p class="text-block">A new Skones Security College experience for guided learning paths.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

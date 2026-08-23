@@ -13,6 +13,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Resources from "./pages/Resources";
+import Education from "./pages/Education";
 
 // Role-based dashboards
 import CEODashboard from "./pages/dashboards/CEODashboard";
@@ -63,6 +64,7 @@ function Router() {
       <Route path={"/"} component={isAuthenticated ? SOCDashboard : Home} />
       <Route path={"/login"} component={Login} />
       <Route path={"/resources"} component={Resources} />
+      <Route path={"/education"} component={Education} />
 
       {/* Role-based dashboards */}
       <Route

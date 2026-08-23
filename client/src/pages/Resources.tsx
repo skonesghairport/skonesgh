@@ -379,12 +379,20 @@ export default function Resources() {
               </span>
               Skones Security Desk
             </a>
-            <Badge
-              variant="outline"
-              className="border-slate-300 bg-white/70 px-3 py-1 text-xs font-medium dark:border-slate-700 dark:bg-slate-900/70"
-            >
-              Checked August 22, 2026
-            </Badge>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="/education"
+                className="rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1.5 text-xs font-semibold text-cyan-800 transition-colors hover:bg-cyan-100 dark:border-cyan-900 dark:bg-cyan-950/60 dark:text-cyan-200 dark:hover:bg-cyan-950"
+              >
+                College & Online Education
+              </a>
+              <Badge
+                variant="outline"
+                className="border-slate-300 bg-white/70 px-3 py-1 text-xs font-medium dark:border-slate-700 dark:bg-slate-900/70"
+              >
+                Checked August 22, 2026
+              </Badge>
+            </div>
           </div>
 
           <div className="mt-14 max-w-3xl">

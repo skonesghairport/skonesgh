@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F4F8; overflow: hidden; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: #F0F4F8;
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 60px;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: #0A2540;
+            margin-bottom: 15px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 72px;
+            color: #0A2540;
+            line-height: 1.1;
+            margin-bottom: 50px;
+        }
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .feature-block {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .big-num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 90px;
+            color: #E53E3E;
+            line-height: 0.7;
+            margin-right: 30px;
+            opacity: 0.25;
+        }
+        .text-content {
+            max-width: 480px;
+        }
+        .text-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: #0A2540;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .text-content p {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #2D3748;
+        }
+        .quote-box {
+            margin-top: 40px;
+            border-left: 4px solid #E53E3E;
+            padding-left: 20px;
+            padding-top: 10px;
+            font-style: italic;
+            font-size: 18px;
+            color: #4A5568;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="rule"></div>
+        <h2 class="header">FlightRadar24 quick views</h2>
+        <div class="main-grid">
+            <div class="left-col">
+                <div class="feature-block">
+                    <span class="big-num">01</span>
+                    <div class="text-content">
+                        <h3>Curated Launchpad</h3>
+                        <p>Global map and specific airport buttons (ATL, JFK, LHR, DXB, HND, SIN, SYD, GRU, JNB) provide instant access to official trackers.</p>
+                    </div>
+                </div>
+                <div class="feature-block">
+                    <span class="big-num">02</span>
+                    <div class="text-content">
+                        <h3>External Context</h3>
+                        <p>Each quick view opens the official provider page in a new tab, ensuring Skonesgh remains available for reference.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-col">
+                <div class="feature-block">
+                    <span class="big-num">03</span>
+                    <div class="text-content">
+                        <h3>Operational Focus</h3>
+                        <p>Recognizable airport codes and location labels help security personnel maintain situational awareness across regions.</p>
+                    </div>
+                </div>
+                <div class="feature-block">
+                    <span class="big-num">04</span>
+                    <div class="text-content">
+                        <h3>Data Integrity</h3>
+                        <p>The app does not scrape, mirror, or bypass access controls. All aviation data ownership stays with FlightRadar24.</p>
+                    </div>
+                </div>
+                <div class="quote-box">
+                    "Provider-owned aviation data stays with FlightRadar24. Skonesgh supplies a curated launchpad and does not replicate live data feeds."
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
