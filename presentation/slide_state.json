@@ -2,8 +2,8 @@
   "project_info": {
     "title": "Skonesgh App: Security, Learning & Aviation Awareness",
     "created": 1787494193.076,
-    "last_updated": 1787494247.438,
-    "total_slides": 10
+    "last_updated": 1787495275.756,
+    "total_slides": 12
   },
   "slides": [
     {
@@ -55,6 +55,16 @@
       "id": "closing_slide",
       "state": "edited",
       "pageNum": 10
+    },
+    {
+      "id": "ghana_aviation_pathways",
+      "state": "edited",
+      "pageNum": 11
+    },
+    {
+      "id": "international_modules_partnerships",
+      "state": "edited",
+      "pageNum": 12
     }
   ],
   "outline": [
@@ -117,6 +127,18 @@
       "title": "Learn deliberately. Observe responsibly.",
       "summary": "One workspace for discovery and awareness, presented by Skones Security.",
       "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "ghana_aviation_pathways",
+      "title": "Ghana aviation and border-security pathways",
+      "summary": "Verified Ghana Airports Company, GATA, Ghana Immigration Service, and ICAO references with provider-controlled enrollment and credential conditions.",
+      "image_plan": "No image needed; use a structured text layout with a shaded source table."
+    },
+    {
+      "id": "international_modules_partnerships",
+      "title": "International modules, exchanges, and affiliate boundaries",
+      "summary": "G4S and ASIS external references plus future exchange and cross-deployment concepts with explicit written-agreement requirements.",
+      "image_plan": "No image needed; use an oversized-number layout with a disclosure block."
     }
   ]
 }

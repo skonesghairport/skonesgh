@@ -28,6 +28,51 @@ const tracks = [
   },
 ] as const;
 
+const specialistResources = [
+  {
+    provider: "Ghana Airports Company Limited",
+    title: "Aviation Security Training School",
+    detail: "Official Ghana airport-security reference · private security and non-security staff scope described",
+    label: "Provider confirmation required",
+    href: "https://www.gacl.com.gh/aviation-security-training-school/",
+  },
+  {
+    provider: "Ghana Civil Aviation Training Academy",
+    title: "Aviation and security course catalog",
+    detail: "Official Ghana aviation training reference · security, safety, dangerous goods, and operations",
+    label: "Provider-priced / confirm",
+    href: "https://www.gcaa.com.gh/gata/gata-courses/",
+  },
+  {
+    provider: "Ghana Immigration Service",
+    title: "Risk analysis and intelligence-led border management",
+    detail: "Official government context · immigration and border-management capacity building",
+    label: "Reference only",
+    href: "https://gis.gov.gh/gis-begin-shift-sponsored-training-in-risk-analysis-and-intelligence-led-border-management/",
+  },
+  {
+    provider: "ICAO",
+    title: "Aviation Security Training Packages",
+    detail: "Basic AVSEC, airport supervisors, air cargo, inspectors, managers, and behaviour detection",
+    label: "International provider / confirm",
+    href: "https://www.icao.int/isd-security/packages",
+  },
+  {
+    provider: "G4S Academy",
+    title: "Private-security learning and industry expertise",
+    detail: "Official G4S reference · guarding, CCTV, door supervision, and close-protection examples vary by market",
+    label: "G4S-owned / no Skones affiliation claimed",
+    href: "https://www.g4s.com/en-za/what-we-do/g4s-academy",
+  },
+  {
+    provider: "ASIS International",
+    title: "Security professional education",
+    detail: "Official international reference · webinars, certificates, executive education, and CPE pathways",
+    label: "Free and paid options / confirm",
+    href: "https://www.asisonline.org/professional-development/education/",
+  },
+] as const;
+
 const onlineResources = [
   {
     provider: "Cisco Skills for All",
@@ -120,7 +165,38 @@ export default function Education() {
           ))}
         </div>
 
-        <section className="mt-20 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <section className="mt-20 border-t border-slate-200 pt-12 dark:border-slate-800">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-300">Ghana aviation & international security</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Specialist pathways, official sources only.</h2>
+            <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">
+              These references connect learners to Ghana airport and aviation training, immigration and border-management context, ICAO packages, and international private-security professional development. They are not sold, delivered, or endorsed by Skones Security unless a written agreement is publicly confirmed.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {specialistResources.map(resource => (
+              <Card key={resource.title} className="border-slate-200/80 bg-white/90 dark:border-slate-800 dark:bg-slate-900/70">
+                <CardContent className="p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{resource.provider}</p>
+                      <h3 className="mt-1 font-semibold">{resource.title}</h3>
+                    </div>
+                    <Badge variant="outline" className="shrink-0 text-[10px]">{resource.label}</Badge>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">{resource.detail}</p>
+                  <Button asChild size="sm" variant="outline" className="mt-4 rounded-full">
+                    <a href={resource.href} target="_blank" rel="noreferrer">
+                      Official source <ArrowUpRight className="ml-1 h-4 w-4" />
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-20 grid gap-8 border-t border-slate-200 pt-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start dark:border-slate-800">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-300">Online Education</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight">Official resources, clearly labeled.</h2>
@@ -148,8 +224,13 @@ export default function Education() {
           </div>
         </section>
 
+        <section className="mt-20 border-t border-amber-200 bg-amber-50/70 px-5 py-6 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
+          <p className="font-semibold">Exchange, cross-deployment, and airport partnerships</p>
+          <p className="mt-2">Skones Security may explore future exchange programs, international private-security partnerships, and cross-deployment pathways with qualified firms and airports. These are opportunity concepts—not current programs, affiliate claims, job placements, or immigration arrangements. Participation would require written agreements, local licensing, airport authorization, safeguarding, and provider confirmation.</p>
+        </section>
+
         <footer className="mt-20 border-t border-slate-200 pt-6 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400">
-          Skones Security College and Online Education are presented by Skones Security. External providers own their courses, data, access terms, and credentials.
+          Skones Security College and Online Education are presented by Skones Security. External providers own their courses, data, access terms, pricing, and credentials.
         </footer>
       </section>
     </main>

@@ -125,3 +125,22 @@ Skonesgh helps security-minded users discover trustworthy learning paths and rea
 - [Microsoft Learn fundamentals](https://learn.microsoft.com/en-us/training/paths/describe-basic-concepts-of-cybersecurity/)
 - [NIST NICE online learning directory](https://www.nist.gov/itl/applied-cybersecurity/nice/resources/online-learning-content)
 - [FlightRadar24](https://www.flightradar24.com/)
+
+
+## Slide 11 — Ghana aviation and border-security pathways
+
+- Ghana Airports Company Limited’s Aviation Security Training School is an official external reference whose published scope includes AVSEC personnel, private security agencies, and non-security staff; provider confirmation is required for enrollment and pricing.
+- Ghana Civil Aviation Training Academy lists security training alongside safety management, dangerous goods, flight dispatch, air traffic control, and other aviation categories at Kotoka International Airport.
+- Ghana Immigration Service publicly describes risk analysis and intelligence-led border-management capacity building under the SHIFT project with ICMPD; this is government context, not a public Skones course.
+- ICAO publishes international AVSEC packages for basic aviation security, airport supervisors, cargo and mail security, inspectors, managers, and behaviour detection.
+
+---
+
+## Slide 12 — International modules, exchanges, and affiliate boundaries
+
+- G4S Academy and G4S accredited training are official external references for private-security learning; availability and qualification rules vary by country.
+- ASIS International provides webinars, certificate courses, executive education, certification preparation, and CPE pathways, with both free and paid options.
+- Skones Security may develop future exchange, cross-deployment, international private-security, and international-airport partnership pathways, but these remain opportunity concepts until formal agreements are signed and publicly confirmed.
+- Products and courses should be marked as **Skones Security original**, **official external resource**, **affiliate link pending agreement**, or **partner-delivered only after written authorization**.
+
+> No GACL, GATA, GIS, ICAO, G4S, ASIS, airport, or immigration affiliation is claimed without a written agreement and public confirmation from the relevant organization.

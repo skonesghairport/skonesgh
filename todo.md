@@ -151,8 +151,17 @@
 
 
 ## Follow-up Request
-- [ ] Add Skones Security College and Online Education navigation/tab experience credited to Skones Security
-- [ ] Prepare and generate a feature-and-resources presentation for the Skonesgh app
-- [ ] Inspect related Skones repositories and document a safe consolidation plan
-- [ ] Validate education tab, existing resource directory, and flight quick-view flows
-- [ ] Consolidate only approved repositories or preserve separate repositories with clear links
+- [x] Add Skones Security College and Online Education navigation/tab experience credited to Skones Security
+- [x] Prepare and generate a feature-and-resources presentation for the Skonesgh app
+- [x] Inspect related Skones repositories and document a safe consolidation plan
+- [x] Validate education tab, existing resource directory, and flight quick-view flows
+- [x] Consolidate only approved repositories or preserve separate repositories with clear links
+
+
+## Expanded Education & Partnership Request
+- [ ] Research official Ghana aviation, airport, immigration, private-security, and international training sources
+- [ ] Add free and minor-paid course categories with provider ownership and credential conditions
+- [ ] Add G4S and international security association references only as official external resources unless partnership proof exists
+- [ ] Add exchange, cross-deployment, and international-airport partnership pathways as clearly labeled opportunity concepts
+- [ ] Update Skones Security College and presentation with transparent affiliate and partnership disclosures
+- [ ] Validate, commit, and preview the expanded education catalog
