@@ -177,3 +177,10 @@
 - [x] Locate and verify the original Skones Security logo asset
 - [x] Apply the original logo to the College page and presentation title/closing treatments
 - [x] Validate logo rendering and regenerate the presentation deliverables
+
+
+## Unified Management App Consolidation
+- [x] Map student, education, aviation, external-resource, and management surfaces into one navigation model
+- [x] Define role-aware visibility and provider/partnership boundary labels
+- [x] Implement the unified Skones management-app experience without claiming unverified integrations
+- [x] Validate unified navigation and core feature flows

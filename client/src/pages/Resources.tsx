@@ -414,7 +414,8 @@ export default function Resources() {
 
       <section className="container grid gap-5 py-8 md:grid-cols-2">
         <Card
-          data-testid="flight-tracker-card"
+          id="flight-tracker"
+        data-testid="flight-tracker-card"
           className="overflow-hidden border-slate-200 bg-slate-950 text-white shadow-xl shadow-slate-200/50 dark:border-slate-800 dark:shadow-none"
         >
           <CardHeader className="relative pb-3">

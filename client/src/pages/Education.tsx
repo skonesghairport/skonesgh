@@ -224,7 +224,7 @@ export default function Education() {
           </div>
         </section>
 
-        <section className="mt-20 border-t border-amber-200 bg-amber-50/70 px-5 py-6 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
+        <section id="partnerships" className="mt-20 border-t border-amber-200 bg-amber-50/70 px-5 py-6 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
           <p className="font-semibold">Exchange, cross-deployment, and airport partnerships</p>
           <p className="mt-2">Skones Security may explore future exchange programs, international private-security partnerships, and cross-deployment pathways with qualified firms and airports. These are opportunity concepts—not current programs, affiliate claims, job placements, or immigration arrangements. Participation would require written agreements, local licensing, airport authorization, safeguarding, and provider confirmation.</p>
         </section>
