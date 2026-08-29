@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
-import { Shield, AlertTriangle, MapPin, Phone, Clock, LogOut } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, BookOpen, GraduationCap, LogOut, MapPin, Plane, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function SOCDashboard() {
@@ -131,6 +131,47 @@ export default function SOCDashboard() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Unified Learning & Awareness Hub */}
+        <Card className="mb-8 border-slate-700 bg-slate-800">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-white">
+              <Shield className="h-5 w-5 text-cyan-300" />
+              Skones Management Hub
+            </CardTitle>
+            <CardDescription className="text-slate-400">
+              Move from operational oversight to approved learning and official awareness resources without leaving the management workspace.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-3 md:grid-cols-4">
+              <a href="/education" className="group border border-slate-700 bg-slate-900 p-4 transition-colors hover:border-cyan-400">
+                <GraduationCap className="h-5 w-5 text-cyan-300" />
+                <p className="mt-4 font-semibold text-white">Student College</p>
+                <p className="mt-1 text-xs leading-5 text-slate-400">Guided tracks and provider-labeled courses.</p>
+                <ArrowUpRight className="mt-4 h-4 w-4 text-slate-500 group-hover:text-cyan-300" />
+              </a>
+              <a href="/resources" className="group border border-slate-700 bg-slate-900 p-4 transition-colors hover:border-cyan-400">
+                <BookOpen className="h-5 w-5 text-cyan-300" />
+                <p className="mt-4 font-semibold text-white">Resource Directory</p>
+                <p className="mt-1 text-xs leading-5 text-slate-400">Search free-first and official learning links.</p>
+                <ArrowUpRight className="mt-4 h-4 w-4 text-slate-500 group-hover:text-cyan-300" />
+              </a>
+              <a href="/resources#flight-tracker" className="group border border-slate-700 bg-slate-900 p-4 transition-colors hover:border-cyan-400">
+                <Plane className="h-5 w-5 text-cyan-300" />
+                <p className="mt-4 font-semibold text-white">Aviation Views</p>
+                <p className="mt-1 text-xs leading-5 text-slate-400">Regional context and official tracker launchpads.</p>
+                <ArrowUpRight className="mt-4 h-4 w-4 text-slate-500 group-hover:text-cyan-300" />
+              </a>
+              <a href="/education#partnerships" className="group border border-slate-700 bg-slate-900 p-4 transition-colors hover:border-cyan-400">
+                <Shield className="h-5 w-5 text-cyan-300" />
+                <p className="mt-4 font-semibold text-white">Partnership Paths</p>
+                <p className="mt-1 text-xs leading-5 text-slate-400">Future pathways with explicit authorization boundaries.</p>
+                <ArrowUpRight className="mt-4 h-4 w-4 text-slate-500 group-hover:text-cyan-300" />
+              </a>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Active Incidents */}
         <Card className="bg-slate-800 border-slate-700 mb-8">
